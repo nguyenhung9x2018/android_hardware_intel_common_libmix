@@ -706,6 +706,13 @@ void VideoDecoderAVC::updateFormatInfo(vbp_data_h264 *data) {
     // new video size
     uint32_t width = (data->pic_data[0].pic_parms->picture_width_in_mbs_minus1 + 1) * 16;
     uint32_t height = (data->pic_data[0].pic_parms->picture_height_in_mbs_minus1 + 1) * 16;
+
+    if (data->codec_data->crop_top > 0)
+        height -= data->codec_data->crop_top;
+
+    if (data->codec_data->crop_bottom > 0)
+        height -= data->codec_data->crop_bottom;
+
     ITRACE("updateFormatInfo: current size: %d x %d, new size: %d x %d",
         mVideoFormatInfo.width, mVideoFormatInfo.height, width, height);
 
