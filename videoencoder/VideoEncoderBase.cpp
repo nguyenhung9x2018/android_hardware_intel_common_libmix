@@ -867,7 +867,7 @@ Encode_Status VideoEncoderBase::querySupportedSurfaceMemTypes() {
             continue;
     }
 
-    delete attribs;
+    delete[] attribs;
 
     return ENCODE_SUCCESS;
 }
