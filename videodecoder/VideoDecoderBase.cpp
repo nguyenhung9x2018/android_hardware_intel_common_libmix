@@ -1218,6 +1218,10 @@ Decode_Status VideoDecoderBase::getRawDataFromSurface(VideoRenderBuffer *renderB
     // size in NV12 format
     uint32_t cropWidth = mVideoFormatInfo.width - (mVideoFormatInfo.cropLeft + mVideoFormatInfo.cropRight);
     uint32_t cropHeight = mVideoFormatInfo.height - (mVideoFormatInfo.cropBottom + mVideoFormatInfo.cropTop);
+    if (strcasecmp(mVideoFormatInfo.mimeType,"video/avc") == 0 ||
+        strcasecmp(mVideoFormatInfo.mimeType,"video/h264") == 0) {
+        cropHeight = mVideoFormatInfo.height;
+    }
     int32_t size = cropWidth  * cropHeight * 3 / 2;
 
     if (internal) {
@@ -1647,6 +1651,10 @@ void VideoDecoderBase::setRenderRect() {
     rect.y = mVideoFormatInfo.cropTop;
     rect.width = mVideoFormatInfo.width - (mVideoFormatInfo.cropLeft + mVideoFormatInfo.cropRight);
     rect.height = mVideoFormatInfo.height - (mVideoFormatInfo.cropBottom + mVideoFormatInfo.cropTop);
+    if (strcasecmp(mVideoFormatInfo.mimeType,"video/avc") == 0 ||
+        strcasecmp(mVideoFormatInfo.mimeType,"video/h264") == 0) {
+        rect.height = mVideoFormatInfo.height;
+    }
 
     VADisplayAttribute render_rect;
     render_rect.type = VADisplayAttribRenderRect;
