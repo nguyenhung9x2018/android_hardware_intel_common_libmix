@@ -695,7 +695,7 @@ Decode_Status VideoDecoderAVC::startVA(vbp_data_h264 *data) {
    // for 1080p, limit the total surface to 19, according the hardware limitation
    // change the max surface number from 19->10 to workaround memory shortage
    // remove the workaround
-    if(mVideoFormatInfo.height == 1088 && DPBSize + AVC_EXTRA_SURFACE_NUMBER > 19) {
+    if(mVideoFormatInfo.surfaceHeight == 1088 && DPBSize + AVC_EXTRA_SURFACE_NUMBER > 19) {
         DPBSize = 19 - AVC_EXTRA_SURFACE_NUMBER;
     }
 
