@@ -47,6 +47,7 @@ LOCAL_C_INCLUDES += \
 endif
 
 LOCAL_SHARED_LIBRARIES := \
+    liblog \
     libcutils \
     libutils \
     libva \
