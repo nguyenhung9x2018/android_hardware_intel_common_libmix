@@ -160,6 +160,10 @@ static int gfx_Blit(buffer_handle_t src, buffer_handle_t dest,
     }
 
 #ifdef MRFLD_GFX
+#ifdef ASUS_ZENFONE2_LP_BLOBS
+    IMG_gralloc_module_public_t* GrallocMod = (IMG_gralloc_module_public_t*)gModule;
+    err = GrallocMod->Blit(GrallocMod, src, dest, w, h, 0, 0, 0, 0);
+#else
     {
         int fenceFd;
         err = gAllocMod->perform(gAllocMod, GRALLOC_MODULE_BLIT_HANDLE_TO_HANDLE_IMG, src, dest, w, h, 0, 0, 0, -1, &fenceFd);
@@ -168,6 +172,7 @@ static int gfx_Blit(buffer_handle_t src, buffer_handle_t dest,
             close(fenceFd);
         }
     }
+#endif
 #else
     IMG_gralloc_module_public_t* GrallocMod = (IMG_gralloc_module_public_t*)gModule;
     err = GrallocMod->Blit2(GrallocMod, src, dest, w, h, 0, 0);
