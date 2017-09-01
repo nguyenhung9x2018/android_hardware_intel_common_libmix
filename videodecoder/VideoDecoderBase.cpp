@@ -913,7 +913,7 @@ Decode_Status VideoDecoderBase::setupVA(uint32_t numSurface, VAProfile profile, 
             mVASurfaceAttrib->pixel_format = VA_FOURCC_NV12;
             mVASurfaceAttrib->width = mVideoFormatInfo.surfaceWidth;
             mVASurfaceAttrib->height = mVideoFormatInfo.surfaceHeight;
-#ifdef ASUS_ZENFONE2_LP_BLOBS
+#ifdef PRE_ION_X86
             mVASurfaceAttrib->data_size = mConfigBuffer.graphicBufferStride * mVideoFormatInfo.surfaceHeight * 1.5;
             mVASurfaceAttrib->pitches[0] = mConfigBuffer.graphicBufferStride;
             mVASurfaceAttrib->pitches[1] = mConfigBuffer.graphicBufferStride;
@@ -1334,7 +1334,7 @@ Decode_Status VideoDecoderBase::createSurfaceFromHandle(int index) {
     surfExtBuf.pixel_format = VA_FOURCC_NV12;
     surfExtBuf.width = mVideoFormatInfo.surfaceWidth;
     surfExtBuf.height = mVideoFormatInfo.surfaceHeight;
-#ifdef ASUS_ZENFONE2_LP_BLOBS
+#ifdef PRE_ION_X86
     surfExtBuf.data_size = mConfigBuffer.graphicBufferStride * mVideoFormatInfo.surfaceHeight * 1.5;
     surfExtBuf.pitches[0] = mConfigBuffer.graphicBufferStride;
     surfExtBuf.pitches[1] = mConfigBuffer.graphicBufferStride;
@@ -1676,7 +1676,7 @@ void VideoDecoderBase::setRenderRect() {
 
     VADisplayAttribute render_rect;
     render_rect.type = VADisplayAttribRenderRect;
-#ifdef ASUS_ZENFONE2_LP_BLOBS
+#ifdef PRE_ION_X86
     render_rect.value = (long) &rect;
 #else
     render_rect.attrib_ptr = &rect;
@@ -1693,7 +1693,7 @@ void VideoDecoderBase::setColorSpaceInfo(int32_t colorMatrix, int32_t videoRange
 
     ITRACE("set colorMatrix: 0x%x ", colorMatrix);
     VADisplayAttribute cm;
-#ifdef ASUS_ZENFONE2_LP_BLOBS
+#ifdef PRE_ION_X86
     ptr = (void **) &cm.value;
 #else
     ptr = &cm.attrib_ptr;

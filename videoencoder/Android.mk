@@ -84,6 +84,10 @@ ifeq ($(ENABLE_IMG_GRAPHICS),true)
     endif
 endif
 
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
+
 LOCAL_CFLAGS += -Werror
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libva_videoencoder
@@ -110,6 +114,11 @@ LOCAL_SHARED_LIBRARIES := liblog libutils libbinder libgui \
                           libui libcutils libhardware
 LOCAL_CFLAGS += -DINTEL_VIDEO_XPROC_SHARING
 endif
+
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
+
 LOCAL_CFLAGS += -Werror
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libintelmetadatabuffer
