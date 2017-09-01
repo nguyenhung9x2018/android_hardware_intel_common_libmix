@@ -173,7 +173,7 @@ Decode_Status VideoDecoderMPEG4::decodeFrame(VideoDecodeBuffer *buffer, vbp_data
         return DECODE_SUCCESS;
     }
     if (data->picture_data && (data->picture_data->picture_param.vop_width == 0 || data->picture_data->picture_param.vop_height == 0)) {
-#ifndef ASUS_ZENFONE2_LP_BLOBS
+#ifndef PRE_ION_X86
         if (!data->codec_data.got_vol && data->codec_data.got_vop) {
             // error enhancement if vol is missing
             data->picture_data->picture_param.vop_width = mVideoFormatInfo.width;
@@ -619,7 +619,7 @@ void VideoDecoderMPEG4::updateFormatInfo(vbp_data_mp42 *data) {
         mVideoFormatInfo.width, mVideoFormatInfo.height,
         data->codec_data.video_object_layer_width,
         data->codec_data.video_object_layer_height);
-#ifndef ASUS_ZENFONE2_LP_BLOBS
+#ifndef PRE_ION_X86
     // error enhancement if vol is missing
     if (!data->codec_data.got_vol && data->codec_data.got_vop) {
         data->codec_data.video_object_layer_width = mVideoFormatInfo.width;

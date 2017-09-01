@@ -702,7 +702,7 @@ Decode_Status VideoDecoderAVC::startVA(vbp_data_h264 *data) {
     } else {
         // for baseline profile or constrained high profile, enable low delay mode automatically
         enableLowDelayMode((data->codec_data->profile_idc == 66)
-#ifndef ASUS_ZENFONE2_LP_BLOBS
+#ifndef PRE_ION_X86
                            || (data->codec_data->profile_idc == 100
                                && data->codec_data->constraint_set4_flag == 1
                                && data->codec_data->constraint_set5_flag == 1)

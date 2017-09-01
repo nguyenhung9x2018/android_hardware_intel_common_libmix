@@ -160,7 +160,7 @@ static int gfx_Blit(buffer_handle_t src, buffer_handle_t dest,
     }
 
 #ifdef MRFLD_GFX
-#ifdef ASUS_ZENFONE2_LP_BLOBS
+#ifdef PRE_ION_X86
     IMG_gralloc_module_public_t* GrallocMod = (IMG_gralloc_module_public_t*)gModule;
     err = GrallocMod->Blit(GrallocMod, src, dest, w, h, 0, 0, 0, 0);
 #else

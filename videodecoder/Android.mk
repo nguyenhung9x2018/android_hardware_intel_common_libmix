@@ -83,6 +83,10 @@ LOCAL_SRC_FILES += VideoDecoderVP8.cpp
 LOCAL_CFLAGS += -DUSE_HW_VP8
 endif
 
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
+
 # TODO: Fix this.
 LOCAL_CFLAGS += -Wno-error=unused-variable
 
