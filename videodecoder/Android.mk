@@ -21,6 +21,9 @@ LOCAL_CLANG_CFLAGS += -Wno-overloaded-virtual
 
 LOCAL_C_INCLUDES := \
     $(TARGET_OUT_HEADERS)/libva \
+    frameworks/native/libs/nativewindow/include \
+    frameworks/native/libs/nativebase/include \
+    frameworks/native/libs/arect/include \
     $(TARGET_OUT_HEADERS)/libmixvbp
 
 ifeq ($(USE_INTEL_SECURE_AVC),true)

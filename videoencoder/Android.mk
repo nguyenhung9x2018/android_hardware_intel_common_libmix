@@ -34,6 +34,9 @@ endif
 LOCAL_C_INCLUDES := \
     $(TARGET_OUT_HEADERS)/libva \
     $(call include-path-for, frameworks-native) \
+    frameworks/native/libs/nativewindow/include \
+    frameworks/native/libs/nativebase/include \
+    frameworks/native/libs/arect/include \
     $(TARGET_OUT_HEADERS)/pvr
 
 ifeq ($(ENABLE_IMG_GRAPHICS),)
